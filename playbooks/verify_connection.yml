@@ -1,0 +1,10 @@
+- name: Get Cluster Information
+  nutanix.ncp.ntnx_clusters_info:
+    nutanix_host: "{{ nutanix_host }}"
+    nutanix_username: "{{ nutanix_username }}"
+    nutanix_password: "{{ nutanix_password }}"
+    validate_certs: "{{ validate_certs }}"
+  register: result
+
+- debug:
+    var: result
