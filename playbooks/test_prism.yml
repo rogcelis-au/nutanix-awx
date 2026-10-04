@@ -5,16 +5,16 @@
   gather_facts: false
 
   tasks:
-  
-      - name: Query Prism Central cluster information
-        nutanix.ncp.ntnx_clusters_info:
+
+    - name: Query Prism Central cluster information
+      nutanix.ncp.ntnx_clusters_info:
         nutanix_host: "{{ nutanix_host }}"
         nutanix_username: "{{ nutanix_username }}"
         nutanix_password: "{{ nutanix_password }}"
         validate_certs: "{{ validate_certs | default(false) }}"
       register: cluster_info
       no_log: true
- 
+
     - name: Display cluster names
       debug:
         msg: "{{ item.name }}"
