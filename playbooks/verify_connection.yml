@@ -1,3 +1,4 @@
+---
 - name: Get Cluster Information
   nutanix.ncp.ntnx_clusters_info:
     nutanix_host: "{{ nutanix_host }}"
