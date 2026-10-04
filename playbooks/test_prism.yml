@@ -6,7 +6,7 @@
 
   tasks:
   
-    - name: Query Prism Central cluster information
+      - name: Query Prism Central cluster information
       nutanix.ncp.ntnx_clusters_info:
         nutanix_host: "{{ nutanix_host }}"
         nutanix_username: "{{ nutanix_username }}"
