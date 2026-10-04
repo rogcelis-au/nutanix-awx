@@ -1,1 +1,25 @@
+- name: Create VM
+  nutanix.ncp.ntnx_vms:
+    nutanix_host: "{{ nutanix_host }}"
+    nutanix_username: "{{ nutanix_username }}"
+    nutanix_password: "{{ nutanix_password }}"
+    validate_certs: false
 
+    state: present
+    name: RockyVM01
+
+    cluster:
+      name: TestCluster4
+
+    num_vcpus_per_socket: 2
+    num_sockets: 1
+    memory_size_mib: 4096
+
+    nics:
+      - subnet:
+          name: localLAN
+
+    disks:
+      - type: DISK
+        clone_image:
+          name: rhel-9.8-x86_64-boot.iso
