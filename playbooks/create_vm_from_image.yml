@@ -1,3 +1,4 @@
+---
 - name: Create VM
   nutanix.ncp.ntnx_vms:
     nutanix_host: "{{ nutanix_host }}"
