@@ -19,12 +19,13 @@
         cluster:
           name: TestCluster4
 
-        num_vcpus_per_socket: 2
-        num_sockets: 1
-        memory_size_mib: 4096
+        vcpus: 1
+        cores_per_vcpu: 2
+        memory_gb: 4
 
-        nics:
-          - subnet:
+        networks:
+          - is_connected: true
+            subnet:
               name: localLAN
 
         disks:
