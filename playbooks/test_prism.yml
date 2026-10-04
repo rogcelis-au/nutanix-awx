@@ -11,11 +11,11 @@
         nutanix_host: "{{ nutanix_host }}"
         nutanix_username: "{{ nutanix_username }}"
         nutanix_password: "{{ nutanix_password }}"
-        validate_certs: "{{ validate_certs | default(false) }}"
+        validate_certs: false
       register: cluster_info
       no_log: true
 
     - name: Display cluster names
       debug:
-        msg: "{{ item.name }}"
-      loop: "{{ cluster_info.response }}"
+        msg: "Cluster Name: {{ item.status.name }}"
+      loop: "{{ cluster_info.response.entities }}"
