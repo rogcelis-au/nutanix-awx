@@ -1,26 +1,39 @@
 ---
-- name: Create VM
-  nutanix.ncp.ntnx_vms:
-    nutanix_host: "{{ nutanix_host }}"
-    nutanix_username: "{{ nutanix_username }}"
-    nutanix_password: "{{ nutanix_password }}"
-    validate_certs: false
+- name: Create VM from Image
+  hosts: localhost
+  connection: local
+  gather_facts: false
 
-    state: present
-    name: RockyVM01
+  tasks:
 
-    cluster:
-      name: TestCluster4
+    - name: Create VM
+      nutanix.ncp.ntnx_vms:
+        nutanix_host: "{{ nutanix_host }}"
+        nutanix_username: "{{ nutanix_username }}"
+        nutanix_password: "{{ nutanix_password }}"
+        validate_certs: false
 
-    num_vcpus_per_socket: 2
-    num_sockets: 1
-    memory_size_mib: 4096
+        state: present
+        name: RockyVM01
 
-    nics:
-      - subnet:
-          name: localLAN
+        cluster:
+          name: TestCluster4
 
-    disks:
-      - type: DISK
-        clone_image:
-          name: rhel-9.8-x86_64-boot.iso
+        num_vcpus_per_socket: 2
+        num_sockets: 1
+        memory_size_mib: 4096
+
+        nics:
+          - subnet:
+              name: localLAN
+
+        disks:
+          - type: DISK
+            clone_image:
+              name: rhel-9.8-x86_64-boot.iso
+
+      register: vm_create
+
+    - name: Show result
+      debug:
+        var: vm_create
