@@ -3,9 +3,9 @@
   hosts: localhost
   connection: local
   gather_facts: false
- 
+
   tasks:
- 
+  
     - name: Query Prism Central cluster information
       nutanix.ncp.ntnx_clusters_info:
         nutanix_host: "{{ nutanix_host }}"
